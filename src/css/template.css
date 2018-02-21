@@ -1,0 +1,15 @@
+#c-return {
+    position: fixed;
+    display: inline-block;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    color: #fff;
+    background-color: #31709a;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#c-return:hover {
+    background-color: #4a90bf;
+}

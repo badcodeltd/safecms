@@ -1,0 +1,15 @@
+.editor-container {
+    position: relative;
+    height: 300px;
+    margin-bottom: 20px;
+    border: 2px solid #d8d8d8;
+    box-sizing: content-box;
+}
+
+.editor-instance {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

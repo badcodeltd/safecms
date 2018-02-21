@@ -1,0 +1,274 @@
+.post-list {
+    font-size: 0;
+}
+
+.post-headings {
+    padding: 20px 0;
+    background-color: #2f3545;
+    color: #fff;
+}
+
+.post-headings .heading, .posts .item .info {
+    display: inline-block;
+    vertical-align: middle;
+    width: 25%;
+    padding: 0 20px;
+    font-size: 16px;
+}
+
+.posts {
+    background-color: #fff;
+}
+
+.posts .item {
+    padding: 20px 0;
+    cursor: pointer;
+}
+
+.posts .item:hover {
+    background-color: #31709a;
+    color: #fff;
+}
+
+.post-headings .heading:nth-child(1), .posts .item .info:nth-child(1) {
+    width: 50%;
+}
+
+.posts .item .info .tag-draft, .posts .item .info .tag-published {
+    display: inline-block;
+    padding: 4px 8px;
+    color: #fff;
+}
+
+.posts .item .info .tag-draft {
+    background-color: #ce5a25;
+}
+
+.posts .item .info .tag-published {
+    background-color: #5d9243;
+}
+
+.posts .empty {
+    padding: 20px;
+    color: #000;
+    font-size: 16px;
+}
+
+.posts .subtle {
+    opacity: 0.6;
+}
+
+.posts .item-sub {
+    display: none;
+    padding: 20px;
+    border-bottom: 2px solid #31709a;
+}
+
+.posts .item-sub.active {
+    display: block;
+}
+
+.posts .item-sub .service-list, .posts .item-sub .service-actions {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
+}
+
+.posts .item-sub .service-list {
+    width: 60%;
+}
+
+.posts .item-sub .service {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.posts .item-sub .service:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.posts .item-sub .service-actions {
+    width: 40%;
+    text-align: right;
+}
+
+.post-actions {
+    padding-top: 20px;
+    text-align: right;
+}
+
+.post-edit {
+    font-size: 0;
+}
+
+.post-edit .post-content, .post-edit .post-meta {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
+}
+
+.post-edit .post-content {
+    width: calc(75% - 20px);
+    margin-right: 20px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.post-edit .post-meta {
+    width: 25%;
+}
+
+.post-edit .post-content input, .post-edit .post-content .post-content-editable, .post-edit select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', 'Helvetica', sans-serif;
+    font-size: 16px;
+    border: 2px solid #d8d8d8;
+    cursor: text;
+}
+
+.post-edit select {
+    cursor: pointer;
+}
+
+.post-edit .post-content .post-content-editable {
+    min-height: 100px;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.post-edit .post-content label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.post-edit .post-content .slug-trigger {
+    display: none;
+}
+
+.post-edit .post-content .slug-trigger.active {
+    display: block;
+}
+
+.post-edit .slug-trigger span {
+    display: inline-block;
+    margin-left: 10px;
+    color: #31709a;
+    cursor: pointer;
+}
+
+.post-edit .post-content .slug {
+    display: none;
+}
+
+.post-edit .post-content .slug.active {
+    display: block;
+}
+
+.post-edit .post-meta-indicator {
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.post-edit .post-meta-indicator .indicator-bar-background, .post-edit .post-meta-indicator .indicator-bar {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    height: 100%;
+    width: 4px;
+}
+
+.post-edit .post-meta-indicator .indicator-bar-background {
+    background-color: #ccc;
+    z-index: 1;
+}
+
+.post-edit .post-meta-indicator .indicator-bar {
+    background-color: #2f3545;
+    z-index: 2;
+}
+
+.post-edit .post-meta-indicator .indicator-bar.draft {
+    height: 25px;
+}
+
+.post-edit .post-meta-indicator .indicator-bar.published {
+    height: 70px;
+}
+
+.post-edit .post-meta-indicator .indicator-bar.edited {
+    height: 105px;
+}
+
+.post-edit .post-meta-indicator .indicator-item {
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    color: #777;
+}
+
+.post-edit .post-meta-indicator .indicator-item:last-child {
+    padding-bottom: 0;
+}
+
+.post-edit .post-meta-indicator .indicator-item:before {
+    display: block;
+    position: absolute;
+    content: "";
+    left: -3px;
+    top: 3px;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 10px;
+    z-index: 3;
+}
+
+.post-edit .post-meta-indicator .indicator-item.active {
+    color: #000;
+}
+
+.post-edit .post-meta-indicator .indicator-item.active:before {
+    background-color: #2f3545;
+}
+
+.post-edit .post-controls {
+    padding: 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.post-edit .post-controls .button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.post-edit .post-controls .button:last-child {
+    margin-bottom: 0;
+}
+
+.post-edit .editor {
+    border: 2px solid #d8d8d8;
+    padding: 0 1em;
+    outline: none;
+}
+
+.post-edit-success {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    width: 350px;
+    margin-left: -150px;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border: 2px solid #519a31;
+    z-index: 10;
+}

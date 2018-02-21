@@ -1,0 +1,64 @@
+.domain-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.domain-modal-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    margin-top: -95px;
+    margin-left: -225px;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.domain-modal-inner input {
+    display: block;
+    width: 100%;
+    padding: 10px 10px 10px 80px;
+    margin: 20px 0;
+    font-family: 'Open Sans', 'Helvetica', sans-serif;
+    font-size: 16px;
+    border: 2px solid #d8d8d8;
+    cursor: text;
+}
+
+.domain-modal-inner input.with-service {
+    padding-right: 130px;
+}
+
+.domain-modal-inner .protocol-overlay,
+.domain-modal-inner .service-overlay {
+    position: absolute;
+    display: inline-block;
+    top: 64px;
+    padding: 10px;
+    background-color: #d8d8d8;
+    color: #000;
+}
+
+.domain-modal-inner .protocol-overlay {
+    left: 22px;
+}
+
+.domain-modal-inner .service-overlay {
+    right: 22px;
+    width: 120px;
+    padding: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.domain-modal .message {
+    background-color: #b74646;
+    color: #fff;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 14px;
+}

@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Open Sans';
+    src: url('font/OpenSans-Bold.eot');
+    src: url('font/OpenSans-Bold.eot?#iefix') format('embedded-opentype'), url('font/OpenSans-Bold.woff2') format('woff2'), url('font/OpenSans-Bold.woff') format('woff'), url('font/OpenSans-Bold.ttf') format('truetype'), url('font/OpenSans-Bold.svg#OpenSans-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('font/OpenSans.eot');
+    src: url('font/OpenSans.eot?#iefix') format('embedded-opentype'), url('font/OpenSans.woff2') format('woff2'), url('font/OpenSans.woff') format('woff'), url('font/OpenSans.ttf') format('truetype'), url('font/OpenSans.svg#OpenSans') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', 'Helvetica', sans-serif;
+    font-size: 16px;
+    background-color: #f1f1f1;
+}
+
+input, select {
+    outline: none;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    background-color: #31709a;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #4a90bf;
+}
+
+.button.green {
+    background-color: #519a31;
+}
+
+.button.green:hover {
+    background-color: #62af41;
+}

@@ -1,0 +1,25 @@
+.sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    color: #fff;
+    background-color: #2f3545;
+}
+
+.sidebar .logo {
+    padding: 20px;
+}
+
+.sidebar .logo img {
+    width: 100%;
+}
+
+.sidebar .item {
+    padding: 10px 20px;
+    background-color: #2f3545;
+    cursor: pointer;
+}
+
+.sidebar .item:hover, .sidebar .item.active {
+    background-color: #394658;
+}

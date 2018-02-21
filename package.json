@@ -1,0 +1,29 @@
+{
+  "name": "base-safe-app",
+  "version": "1.0.0",
+  "description": "Example of possible SAFE app basis",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "rebuild": "npm rebuild --runtime=electron --target=1.7.11 --disturl=https://atom.io/download/atom-shell --build-from-source",
+    "postinstall": "npm run rebuild",
+    "package": "electron-packager . --appBundleId=\"net.safecms.app\" --asar --out=\"pack\" --prune=true"
+  },
+  "build": {
+    "appId": "net.safecms.app"
+  },
+  "repository": "https://github.com/hunterlester/safe-app-base",
+  "author": "Hunter Lester <hunter.lester@maidsafe.net",
+  "license": "MIT",
+  "dependencies": {
+    "@maidsafe/safe-node-app": "0.6.1",
+    "jquery": "^3.3.1",
+    "csso": "^3.5.0",
+    "uglify-js": "^3.3.10",
+    "javascript-editor": "^1.0.3"
+  },
+  "devDependencies": {
+    "electron": "1.7.11",
+    "electron-packager": "^10.1.2"
+  }
+}

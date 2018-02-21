@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>SafeCMS</title>
+        <link href="./src/css/base.css" type="text/css" rel="stylesheet" />
+        <link href="./src/css/sidebar.css" type="text/css" rel="stylesheet" />
+        <link href="./src/css/content.css" type="text/css" rel="stylesheet" />
+        <link href="./src/css/loader.css" type="text/css" rel="stylesheet" />
+        <link href="./src/css/domain-modal.css" type="text/css" rel="stylesheet" />
+        <link href="./src/css/posts.css" type="text/css" rel="stylesheet" />
+        <link href="./src/css/editor.css" type="text/css" rel="stylesheet" />
+        <link href="./src/css/template.css" type="text/css" rel="stylesheet" />
+        <link href="./src/vendor/medium/editor.min.css" rel="stylesheet" type="text/css" />
+        <link href="./src/vendor/medium/beagle-theme.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="container"></div>
+    </body>
+
+    <script>
+        var $ = jquery = require("jquery"),
+            state = {
+                activePost: false,
+                posts: require('./src/data/posts'),
+                templates: require('./src/data/templates'),
+                cachedDomains: []
+            },
+            safe = require('./src/safe');
+
+        window.state.posts.load(function(){});
+        window.state.templates.load(function(){});
+
+        window.controller = require('./src/controller');
+    </script>
+    <script type="text/javascript" src="./src/vendor/medium/editor.min.js"></script>
+    <script type="text/javascript" src="./src/vendor/ace/ace.js"></script>
+</html>
