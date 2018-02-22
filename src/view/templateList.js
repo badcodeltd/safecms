@@ -50,9 +50,15 @@ class templateList {
                 alert('There was an error loading this template, please restart the app and try again');
             }
         });
+
+        window.jquery('.post-actions .button').on('click', function(){
+            window.state.activeTemplate = false;
+            window.controller.renderView('templateEdit')
+        });
     }
 
     remove() {
+        window.jquery('.post-actions .button').off('click');
         window.jquery('.template-list .posts .item').off('click');
         window.jquery('.page .content').remove('.template-list');
     }
