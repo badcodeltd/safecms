@@ -27,9 +27,9 @@ class templatePreview {
             </div>`);
 
         let template = window.state.activeTemplate,
-            script = document.createElement("script");
+            script = window.document.createElement("script");
         script.innerHTML = templateRenderer.compile(template, true);
-        document.head.appendChild(script);
+        window.document.getElementsByTagName('head')[0].appendChild(script);
 
         window.jquery('#c-return').on('click', function() {
             window.controller.renderView('templateEdit');

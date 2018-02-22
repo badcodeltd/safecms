@@ -11,6 +11,7 @@
         <link href="./src/css/posts.css" type="text/css" rel="stylesheet" />
         <link href="./src/css/editor.css" type="text/css" rel="stylesheet" />
         <link href="./src/css/template.css" type="text/css" rel="stylesheet" />
+        <link href="./src/css/settings.css" type="text/css" rel="stylesheet" />
         <link href="./src/vendor/medium/editor.min.css" rel="stylesheet" type="text/css" />
         <link href="./src/vendor/medium/beagle-theme.css" rel="stylesheet" type="text/css" />
     </head>
@@ -25,12 +26,14 @@
                 activeTemplate: false,
                 posts: require('./src/data/posts'),
                 templates: require('./src/data/templates'),
+                settings: require('./src/data/settings'),
                 cachedDomains: []
             },
             safe = require('./src/safe');
 
         window.state.posts.load(function(){});
         window.state.templates.load(function(){});
+        window.state.settings.load(function(){});
 
         window.controller = require('./src/controller');
     </script>

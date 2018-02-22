@@ -28,17 +28,19 @@ class templates extends dataObject {
     box-shadow: 0 0 4px #ccc;
 }
 
-.advert {
+.safe-advert {
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 30px;
+    height: 0;
     max-width: calc(800px + 4em);
     margin: 0 auto;
     text-align: right;
+    overflow: visible;
 }
 
-.button, .advert a {
+.button, .safe-advert a {
     display: inline-block;
     color: #fff;
     text-decoration: none;
@@ -52,12 +54,12 @@ class templates extends dataObject {
     font-size: 14px;
 }
 
-.advert a {
-    padding: 7px 15px 5px;
-    font-size: 10px;
+.safe-advert a {
+    padding: 9px 15px 7px;
+    font-size: 12px;
 }
 
-.button:hover, .advert a:hover {
+.button:hover, .safe-advert a:hover {
     background-color: #3d9fdc;
 }
 
@@ -69,7 +71,9 @@ class templates extends dataObject {
             `,
                     js: "",
                     templateBefore: `<div class="content">`,
-                    templateAfter: `</div>`
+                    templateAfter:
+`</div>
+<div class="safe-advert"><a href="safe://blog.safecms">Built with Safe-CMS</a></div>`
                 }
             ]
         );

@@ -57,7 +57,17 @@ class postEdit {
             </div>`
         );
 
-        new MediumEditor('#post-editor');
+        if (window.state.settings.get('medium-editor') === 0) {
+            window.jquery('#post-editor').addClass('html-editor');
+            let editorHtml = ace.edit('post-editor');
+            editorHtml.setValue(post ? post.content : '', -1);
+        } else {
+            new MediumEditor('#post-editor', {
+                toolbar: {
+                    buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote']
+                }
+            });
+        }
 
         window.jquery('.post-edit .slug-trigger').on('click', function(){
             window.jquery('.post-edit .slug-trigger').removeClass('active');

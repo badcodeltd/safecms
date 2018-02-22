@@ -9,6 +9,8 @@ const templateList = require('./view/templateList');
 const templateEdit = require('./view/templateEdit');
 const templateEditSuccess = require('./view/templateEditSuccess');
 const templatePreview = require('./view/templatePreview');
+const settingsList = require('./view/settingsList');
+const settingsListSuccess = require('./view/settingsListSuccess');
 
 class controller {
     constructor() {
@@ -26,7 +28,9 @@ class controller {
             templateList: templateList,
             templateEdit: templateEdit,
             templateEditSuccess: templateEditSuccess,
-            templatePreview: templatePreview
+            templatePreview: templatePreview,
+            settingsList: settingsList,
+            settingsListSuccess: settingsListSuccess
         };
 
         this.activeView = 'mock';

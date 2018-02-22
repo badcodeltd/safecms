@@ -1,0 +1,22 @@
+.settings {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.settings-item {
+    padding-bottom: 20px;
+}
+
+.settings-item:last-child {
+    padding-bottom: 0;
+}
+
+.settings select {
+    cursor: pointer;
+}
+
+.setting-description {
+    margin-top: -15px;
+    font-size: 13px;
+    color: #666;
+}

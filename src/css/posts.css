@@ -121,7 +121,7 @@
     width: 25%;
 }
 
-.post-edit .post-content input, .post-edit .post-content .post-content-editable, .post-edit select {
+.post-edit .post-content input, .post-edit .post-content .post-content-editable, .post-edit select, .settings input, .settings select {
     display: block;
     width: 100%;
     padding: 10px;
@@ -142,7 +142,7 @@
     min-width: 100%;
 }
 
-.post-edit .post-content label {
+.post-edit .post-content label, .settings label {
     display: inline-block;
     margin-bottom: 5px;
 }

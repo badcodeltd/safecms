@@ -31,6 +31,7 @@ class template {
      * @returns {string}
      */
     generate(templateString, devOnly) {
+        let advertDisabled = window.state.settings.get('safecms-advert') === 0;
         return `
             var _t = JSON.parse('` + templateString + `')
                 _d = document,
@@ -39,23 +40,22 @@ class template {
                 _s = _d[a='createElement']('style');
                 _j = _d[a]('script'),
                 _b = _d[a]('a');
-            _s[a='appendChild'](_d[b='createTextNode'](atob(_t.css)));
+            _s[v='appendChild'](_d[b='createTextNode'](atob(_t.css)));
             _s.id = 'cms-s';
-            _j[a](_d[b](atob(_t.js)));
-            _h[a='appendChild'](_s);
-            ` + (!devOnly ? `_h[a](_j)` : ``) + `
+            _j[v](_d[b](atob(_t.js)));
+            _h[v='appendChild'](_s);
+            ` + (!devOnly ? `_h[v](_j)` : ``) + `
             var _o = _d[g='getElementById']('c').innerHTML,
                 _n = atob(_t.htmla) + _o + atob(_t.htmlb);
             _d[g]('c').innerHTML = _n;
             
+            var _c = _d[n='getElementsByClassName']('content')[0];
             if (_p != "/" && _p != "/index.html") {
-                var _c = _d['getElementsByClassName']('content')[0];
                 _b.href = '/';
                 _b.className = "button";
                 _b.innerHTML = "Back to home";
-                _c.appendChild(_b);
-            }
-        `;
+                _c[v](_b);
+            } ` + (advertDisabled ? `document[n]('safe-advert')[0].setAttribute('style', 'display: none;')` : ``);
     }
 
     sanitizeCss(css) {

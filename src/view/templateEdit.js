@@ -1,8 +1,6 @@
 const random = require('../util/random');
 const file = require('../data/file');
 const path = require('path');
-const csso = require('csso');
-const uglifyjs = require('uglify-js');
 const templateRenderer = require('../util/template');
 
 class templateEdit {

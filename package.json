@@ -7,7 +7,7 @@
     "start": "electron .",
     "rebuild": "npm rebuild --runtime=electron --target=1.7.11 --disturl=https://atom.io/download/atom-shell --build-from-source",
     "postinstall": "npm run rebuild",
-    "package": "electron-packager . --appBundleId=\"net.safecms.app\" --asar --out=\"pack\" --prune=true"
+    "package": "electron-packager . --appBundleId=\"net.safecms.app\" --out=\"pack\" --prune=true"
   },
   "build": {
     "appId": "net.safecms.app"
@@ -16,7 +16,7 @@
   "author": "Hunter Lester <hunter.lester@maidsafe.net",
   "license": "MIT",
   "dependencies": {
-    "@maidsafe/safe-node-app": "0.6.1",
+    "@maidsafe/safe-node-app": "0.7.0",
     "jquery": "^3.3.1",
     "csso": "^3.5.0",
     "uglify-js": "^3.3.10",

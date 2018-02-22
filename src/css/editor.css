@@ -1,4 +1,4 @@
-.editor-container {
+.editor-container, .html-editor {
     position: relative;
     height: 300px;
     margin-bottom: 20px;

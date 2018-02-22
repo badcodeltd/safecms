@@ -1,3 +1,5 @@
 node_modules
 electron*
 base-safe-app*
+.idea
+pack
