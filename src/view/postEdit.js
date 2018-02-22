@@ -118,6 +118,9 @@ class postEdit {
         post.content = window.jquery('.post-edit #post-editor').html();
         post.networkPath = window.jquery('.post-edit select[name="post-domain"]').val();
 
+        post.content = window.state.settings.get('medium-editor') === 0 ?
+            ace.edit('post-editor').getValue() : window.jquery('.post-edit #post-editor').html();
+
         let dateOptions = {weekday: "short", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
         post.lastModified = (new Date).toLocaleDateString('en-us', dateOptions);
 
