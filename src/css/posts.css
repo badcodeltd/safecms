@@ -170,6 +170,25 @@
     display: block;
 }
 
+.post-edit .post-content .url-container {
+    position: relative;
+}
+
+.post-edit .post-content .url-container:after {
+    content: '.html';
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 2px;
+    padding: 10px;
+    background-color: #d8d8d8;
+    color: #000;
+}
+
+.post-edit .post-content .url-container input {
+    padding-right: 68px;
+}
+
 .post-edit .post-meta-indicator {
     position: relative;
     padding: 20px;

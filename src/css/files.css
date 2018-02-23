@@ -1,0 +1,7 @@
+.file-list .posts .item .info:nth-child(2) {
+    width: 50%;
+}
+
+.file-edit .post-controls {
+    margin-top: 0;
+}

@@ -15,6 +15,7 @@ class Page {
                     <div class="item" data-render="domainList">Domains</div>
                     <div class="item" data-render="postList">Posts</div>
                     <div class="item" data-render="templateList">Templates</div>
+                    <div class="item" data-render="filesList">Files</div>
                     <div class="item" data-render="settingsList">Settings</div>
                 </div>
                 <div class="contentContainer">

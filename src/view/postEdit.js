@@ -36,7 +36,9 @@ class postEdit {
                         <div><label>Post Domain</label></div>
                         <select name="post-domain">` + (domainOptionsHTML.length ? domainOptionsHTML : '<option disabled>Please create a domain and service on the Domains page</option>') + `</select>
                         <div><label>Post URL</label></div>
-                        <input class="slug active" type="text" id="post-slug" name="slug" placeholder="Post URL" value="` + (post ? post.slug : '') + `" />
+                        <div class="url-container">
+                            <input class="slug active" type="text" id="post-slug" name="slug" placeholder="Post URL" value="` + (post ? post.slug : '') + `" />
+                        </div>
                         <div><label>Post Content</label></div>
                         <div class="editor" id="post-editor" data-placeholder="Start writing your post">` + (post ? post.content : '<p>Some example content to edit</p>') + `</div>
                     </form>
@@ -90,7 +92,7 @@ class postEdit {
                     return;
                 }
 
-                window.safe.uploadFile(file.getPath('posts' + path.sep + post.id + '.html'), post.networkPath + post.slug + '.html')
+                window.safe. uploadFile(file.getPath('posts' + path.sep + post.id + '.html'), post.networkPath + post.slug + '.html')
                     .then(ddd => {
                         alert('Your post was successfully saved');
                     });

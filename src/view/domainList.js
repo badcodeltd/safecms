@@ -19,7 +19,7 @@ class domainList {
 
                 domainListHtml += `
                 <div class="item" data-id="` + domain.name + `">
-                    <div class="info"><span class="subtle">safe://</span>` + domain.name + `</div>
+                    <div class="info"><span class="subtle">safe://</span>` + domain.name + (domain.services.length ? `` : `<div class="domain-warning">Add a service (subdomain)</div>`) + `</div>
                 </div>
                 <div class="item-sub" data-id="` + domain.name + `">
                     <div class="service-list">` + (serviceListHtml.length ? serviceListHtml : `No services`) + `</div>
@@ -45,6 +45,7 @@ class domainList {
                 window.jquery('.page .content').append(
                     `<div class="domain-modal">
                     <div class="domain-modal-inner">
+                        <div class="domain-modal-close">&times;</div>
                         <label for="domain-title">Please enter a domain (public name)</label>
                         <input type="text" id="domain-title" placeholder="domain" />
                         <div class="protocol-overlay">safe://</div>
@@ -64,6 +65,10 @@ class domainList {
                         }
                     });
                 });
+
+                window.jquery('.domain-modal-inner .domain-modal-close').on('click', function(){
+                    window.controller.renderView('domainList');
+                });
             });
 
             window.jquery('.domain-list .item').on('click', function () {
@@ -76,6 +81,7 @@ class domainList {
                 window.jquery('.page .content').append(
                     `<div class="domain-modal service-modal">
                     <div class="domain-modal-inner">
+                        <div class="domain-modal-close">&times;</div>
                         <label for="domain-title">Please enter a subdomain (service name)</label>
                         <input type="text" id="service-title" class="with-service" placeholder="service" />
                         <div class="protocol-overlay">safe://</div>
@@ -100,11 +106,16 @@ class domainList {
                         });
                     });
                 });
+
+                window.jquery('.domain-modal-inner .domain-modal-close').on('click', function(){
+                    window.controller.renderView('domainList');
+                });
             });
         });
     }
 
     remove() {
+        window.jquery('.domain-modal-inner .domain-modal-close').off('click');
         window.jquery('.service-actions .button').off('click');
         window.jquery('.domain-modal .button').off('click');
         window.jquery('.page .content').remove('.domain-list, .post-actions');

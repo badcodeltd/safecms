@@ -7,10 +7,11 @@
         <link href="./src/css/sidebar.css" type="text/css" rel="stylesheet" />
         <link href="./src/css/content.css" type="text/css" rel="stylesheet" />
         <link href="./src/css/loader.css" type="text/css" rel="stylesheet" />
-        <link href="./src/css/domain-modal.css" type="text/css" rel="stylesheet" />
+        <link href="./src/css/domains.css" type="text/css" rel="stylesheet" />
         <link href="./src/css/posts.css" type="text/css" rel="stylesheet" />
         <link href="./src/css/editor.css" type="text/css" rel="stylesheet" />
         <link href="./src/css/template.css" type="text/css" rel="stylesheet" />
+        <link href="./src/css/files.css" type="text/css" rel="stylesheet" />
         <link href="./src/css/settings.css" type="text/css" rel="stylesheet" />
         <link href="./src/vendor/medium/editor.min.css" rel="stylesheet" type="text/css" />
         <link href="./src/vendor/medium/beagle-theme.css" rel="stylesheet" type="text/css" />
@@ -26,6 +27,7 @@
                 activeTemplate: false,
                 posts: require('./src/data/posts'),
                 templates: require('./src/data/templates'),
+                files: require('./src/data/files'),
                 settings: require('./src/data/settings'),
                 cachedDomains: []
             },
@@ -33,6 +35,7 @@
 
         window.state.posts.load(function(){});
         window.state.templates.load(function(){});
+        window.state.files.load(function(){});
         window.state.settings.load(function(){});
 
         window.controller = require('./src/controller');
