@@ -1,19 +1,31 @@
 {
-  "name": "base-safe-app",
-  "version": "1.0.0",
-  "description": "Example of possible SAFE app basis",
+  "name": "safe-cms",
+  "version": "0.0.1",
+  "description": "A simple to use content management system for the SAFE Network",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "rebuild": "npm rebuild --runtime=electron --target=1.7.11 --disturl=https://atom.io/download/atom-shell --build-from-source",
     "postinstall": "npm run rebuild",
-    "package": "electron-packager . --appBundleId=\"net.safecms.app\" --out=\"pack\" --prune=true"
+    "package": "electron-packager . --appBundleId=\"net.safecms.app\" --out=\"pack\" --prune=true",
+    "dist-windows": "build -w --x64",
+    "dist-linux": "build -l --x64"
   },
   "build": {
-    "appId": "net.safecms.app"
+    "appId": "net.safecms.app",
+    "asar": "false",
+    "win": {
+      "target": "dir"
+    },
+    "linux": {
+      "target": "dir"
+    },
+    "mac": {
+      "target": "dir"
+    }
   },
-  "repository": "https://github.com/hunterlester/safe-app-base",
-  "author": "Hunter Lester <hunter.lester@maidsafe.net",
+  "repository": "https://github.com/badcodeltd/safecms",
+  "author": "Shane Armstrong <shane@badcode.co.uk",
   "license": "MIT",
   "dependencies": {
     "@maidsafe/safe-node-app": "0.7.0",
@@ -24,6 +36,10 @@
   },
   "devDependencies": {
     "electron": "1.7.11",
-    "electron-packager": "^10.1.2"
+    "electron-packager": "^10.1.2",
+    "electron-builder": "^20.0.8",
+    "7zip-bin-mac": "^1.0.1",
+    "7zip-bin-win": "^2.0.2",
+    "7zip-bin-linux": "^1.0.3"
   }
 }

@@ -3,3 +3,5 @@ electron*
 base-safe-app*
 .idea
 pack
+dist
+release
