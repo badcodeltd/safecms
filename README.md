@@ -20,7 +20,7 @@ Removing the advert can be done by disabling the feature on the settings page of
 Download the latest release here: [https://github.com/badcodeltd/safecms/releases](https://github.com/badcodeltd/safecms/releases)
 
 * `Windows`: Run `safe-cms.exe` within the unzipped directory
-* `Linux`: Run `./safe-cms` within the unzipped directory
+* `Linux`: Run `chmod a+x safe-cms` within the unzipped directory to allow it to be executed, then run `./safe-cms` to start the application
 * `Mac`: A build of the Mac application will be included with the `1.0.0` release and these instructions will be updated
 
 ## Running locally
