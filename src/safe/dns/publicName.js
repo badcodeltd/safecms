@@ -60,7 +60,7 @@ async function getPublicNames(SafeApi) {
 
                 resolve(true);
             } catch (err) {
-                if (err.code === SafeApi.app.CONSTANTS.ERROR_CODE.SYMMETRIC_DECIPHER_FAILURE) {
+                if (err.code === -3) {
                     return resolve(true);
                 }
                 reject(err);

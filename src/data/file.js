@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 
 /**
  * All paths accepted and returned by this class are relative to the App's safe-cms folder for normalisation
@@ -7,7 +8,7 @@ const path = require('path');
  */
 class file {
     constructor() {
-        this.basePath = process.env.APPDATA || (process.platform === 'darwin' ? process.env.HOME + '/Library/Preferences' : '~/.safe-cms');
+        this.basePath = process.env.APPDATA || (process.platform === 'darwin' ? process.env.HOME + '/Library/Preferences' : os.homedir());
         this.basePath = this.basePath + path.sep + 'safe-cms';
 
         // Only triggers the create if the path doesn't exist, just guarantees our settings directory is there.
