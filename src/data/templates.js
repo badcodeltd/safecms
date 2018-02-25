@@ -11,7 +11,7 @@ class templates extends dataObject {
                 {
                     id: 1,
                     title: 'Whisper',
-                    status: 1,
+                    status: 0,
                     networkPath: false,
                     css:`body {
     padding: 4em;
