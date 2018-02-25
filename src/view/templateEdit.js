@@ -78,9 +78,15 @@ class templateEdit {
             tempThis.saveDraftTemplate(template, false, function() {
                 template = window.state.activeTemplate;
 
+                window.jquery('#container .post-edit').append(`
+                    <div class="post-edit-loading">
+                        <div class="post-edit-loading-inner">Uploading template to SAFE Network</div>
+                    </div>
+                `);
+
                 window.safe.uploadFile(file.getPath('templates' + path.sep + template.id + '.js'), template.networkPath + 'template.js')
-                    .then(ddd => {
-                        alert('Your template was successfully saved');
+                    .then(result => {
+                        window.controller.renderView('templateEditUploadSuccess');
                     });
             });
         });
