@@ -53,7 +53,7 @@ class template {
             _d[g]('c').innerHTML = _n;
             
             var _c = _d[n='getElementsByClassName']('content')[0];
-            if (_p != "/" && _p != "/index.html") {
+            if (_c && (_p != "/" && _p != "/index.html")) {
                 _b.href = '/';
                 _b.className = "button";
                 _b.innerHTML = "Back to home";
@@ -62,7 +62,16 @@ class template {
             } ` + (advertDisabled ? `document[n]('safe-advert')[0].setAttribute('style', 'display: none;')` : ``);
     }
 
+    /**
+     * @param content
+     * @param networkPath
+     * @returns {*}
+     */
     replaceUrlsWithLocalPaths(content, networkPath) {
+        if (typeof content !== "string" || !content.length) {
+            return '';
+        }
+
         let files = window.state.files.get('list'),
             urlRegularExpression = /src="(?!safe:\/\/)(\/?[^"]*)"/g,
             matches = content.match(urlRegularExpression);
@@ -87,7 +96,14 @@ class template {
         return content;
     }
 
+    /**
+     * @param string css
+     */
     sanitizeCss(css) {
+        if (typeof css !== "string" || !css.length) {
+            return '';
+        }
+
         return css.replace(/"/g, "'");
     }
 }

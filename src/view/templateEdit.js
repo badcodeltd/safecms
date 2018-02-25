@@ -39,6 +39,7 @@ class templateEdit {
                         <div><label>CSS</label></div>
                         <div class="editor-container"><div class="editor-instance" id="editor-css"></div></div>
                         <div><label>HTML before content</label></div>
+                        <div class="editor-explanation">Your application must export a container with the class "content" to display the "Built with Safe CMS" advert.</div>
                         <div class="editor-container"><div class="editor-instance" id="editor-before"></div></div>
                         <div><label>HTML after content</label></div>
                         <div class="editor-container"><div class="editor-instance" id="editor-after"></div></div>

@@ -13,3 +13,9 @@
     width: 100%;
     height: 100%;
 }
+
+.editor-explanation {
+    padding-bottom: 5px;
+    font-size: 14px;
+    color: #666;
+}
