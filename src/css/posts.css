@@ -279,6 +279,29 @@
     outline: none;
 }
 
+.post-edit .post-edit-loading {
+    font-size: 14px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.post-edit .post-edit-loading-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 300px;
+    margin-left: -150px;
+    margin-top: -30px;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
 .post-edit-success {
     position: fixed;
     bottom: 20px;

@@ -11,6 +11,7 @@ const templateEditSuccess = require('./view/templateEditSuccess');
 const templatePreview = require('./view/templatePreview');
 const filesList = require('./view/filesList');
 const filesEdit = require('./view/filesEdit');
+const filesEditSuccess = require('./view/filesEditSuccess');
 const settingsList = require('./view/settingsList');
 const settingsListSuccess = require('./view/settingsListSuccess');
 
@@ -33,6 +34,7 @@ class controller {
             templatePreview: templatePreview,
             filesList: filesList,
             filesEdit: filesEdit,
+            filesEditSuccess: filesEditSuccess,
             settingsList: settingsList,
             settingsListSuccess: settingsListSuccess
         };

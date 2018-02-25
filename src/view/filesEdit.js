@@ -58,9 +58,15 @@ class filesEdit {
                     return;
                 }
 
-                window.safe. uploadFile(files.path, files.networkPath + files.slug)
-                    .then(ddd => {
-                        alert('Your file was successfully uploaded');
+                window.jquery('#container .post-edit').append(`
+                    <div class="post-edit-loading">
+                        <div class="post-edit-loading-inner">Uploading file to SAFE Network</div>
+                    </div>
+                `);
+
+                window.safe.uploadFile(files.path, files.networkPath + files.slug)
+                    .then(result => {
+                        window.controller.renderView('filesEditSuccess')
                     });
             });
         });
