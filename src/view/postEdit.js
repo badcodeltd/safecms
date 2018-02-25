@@ -55,6 +55,10 @@ class postEdit {
                         <div class="button save-draft">Save draft</div>
                         <div class="button green publish">Publish to SafeNet</div>
                     </div>
+                    <div class="post-template-warning">
+                        Have you published your template to this domain yet?
+                        <div class="subtle">Click on templates in the menu and publish the whisper template to get started.</div>
+                    </div>
                 </div>
             </div>`
         );
