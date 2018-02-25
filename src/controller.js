@@ -5,6 +5,7 @@ const domainList = require('./view/domainList');
 const postList = require('./view/postList');
 const postEdit = require('./view/postEdit');
 const postEditSuccess = require('./view/postEditSuccess');
+const postEditUploadSuccess = require('./view/postEditUploadSuccess');
 const templateList = require('./view/templateList');
 const templateEdit = require('./view/templateEdit');
 const templateEditSuccess = require('./view/templateEditSuccess');
@@ -29,6 +30,7 @@ class controller {
             postList: postList,
             postEdit: postEdit,
             postEditSuccess: postEditSuccess,
+            postEditUploadSuccess: postEditUploadSuccess,
             templateList: templateList,
             templateEdit: templateEdit,
             templateEditSuccess: templateEditSuccess,

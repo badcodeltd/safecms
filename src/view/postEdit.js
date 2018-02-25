@@ -92,9 +92,15 @@ class postEdit {
                     return;
                 }
 
+                window.jquery('#container .post-edit').append(`
+                    <div class="post-edit-loading">
+                        <div class="post-edit-loading-inner">Uploading post to SAFE Network</div>
+                    </div>
+                `);
+
                 window.safe. uploadFile(file.getPath('posts' + path.sep + post.id + '.html'), post.networkPath + post.slug + '.html')
-                    .then(ddd => {
-                        alert('Your post was successfully saved');
+                    .then(result => {
+                        window.controller.renderView('postEditUploadSuccess');
                     });
             });
         });
