@@ -57,6 +57,7 @@ class template {
                 _b.href = '/';
                 _b.className = "button";
                 _b.innerHTML = "Back to home";
+                ` + (devOnly ? `_b.onclick = function(){ alert('This button is for local styling purposes and is disabled in previews'); return false; }; ` : ``) + `
                 _c[v](_b);
             } ` + (advertDisabled ? `document[n]('safe-advert')[0].setAttribute('style', 'display: none;')` : ``);
     }
