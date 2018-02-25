@@ -34,7 +34,7 @@
     width: 50%;
 }
 
-.posts .item .info .tag-draft, .posts .item .info .tag-published {
+.posts .item .info .tag-draft, .posts .item .info .tag-published, .posts .item .info .tag-edited {
     display: inline-block;
     padding: 4px 8px;
     color: #fff;
@@ -46,6 +46,10 @@
 
 .posts .item .info .tag-published {
     background-color: #5d9243;
+}
+
+.posts .item .info .tag-edited {
+    background-color: #2f3545;
 }
 
 .posts .empty {

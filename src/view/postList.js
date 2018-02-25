@@ -9,12 +9,14 @@ class postList {
         let postListHtml = '';
 
         window.state.posts.get('list').map(function(post) {
+            let postStatusText = post.status === 1 ? 'Published' : (post.status === 2 ? 'Edited' : 'Draft');
+
             postListHtml += `<div class="item" data-id="` + post.id + `">
                 <div class="info">` + post.title + `</div>
                 <div class="info">` + post.lastModified + `</div>
                 <div class="info">
-                    <div class="tag-` + (post.status === 1 ? 'published' : 'draft') + `">
-                        ` + (post.status === 1 ? 'Published' : 'Draft') + `
+                    <div class="tag-` + postStatusText.toLocaleLowerCase() + `">
+                        ` + postStatusText + `
                     </div>
                 </div>
             </div>`

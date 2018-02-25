@@ -61,13 +61,11 @@ class file  {
                 try {
                     await nfs.insert(containerPath.file, file);
                 } catch (e) {
-                    console.log(e.code);
                     if (e.code !== -107) {
                         reject(e);
                     }
                     const fileXorname = await servFolder.get(containerPath.file);
                     await nfs.update(containerPath.file, file, fileXorname.version + 1);
-                    console.log('hi');
                 }
 
                 resolve();
