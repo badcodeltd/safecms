@@ -9,11 +9,13 @@ class templateList {
         let templateListHtml = '';
 
         window.state.templates.get('list').map(function(template) {
+            let templateStatusText = template.status === 1 ? 'Published' : (template.status === 2 ? 'Edited' : 'Draft');
+
             templateListHtml += `<div class="item" data-id="` + template.id + `">
                 <div class="info">` + template.title + `</div>
                 <div class="info">
-                    <div class="tag-` + (template.status === 1 ? 'published' : 'draft') + `">
-                        ` + (template.status === 1 ? 'Enabled' : 'Disabled') + `
+                    <div class="tag-` + templateStatusText.toLocaleLowerCase() + `">
+                        ` + templateStatusText + `
                     </div>
                 </div>
             </div>`

@@ -10,6 +10,7 @@ class dataObject {
         this.get = this.get.bind(this);
         this.set = this.set.bind(this);
         this.save = this.save.bind(this);
+        this.replaceListItemById = this.replaceListItemById.bind(this);
     }
 
     /**
@@ -61,6 +62,23 @@ class dataObject {
         let saveData = JSON.stringify(this.data);
         file.createDirectory('data');
         file.createFile('data/' + this.identifier + '.json', JSON.stringify(this.data), callback);
+    }
+
+    /**
+     * Replaces a given dataObject ilist tem by ID (if it is set) with a new dataObject list item
+     *
+     * @param {Array} items
+     * @param {{}} newItem
+     */
+    replaceListItemById(items, newItem) {
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].id === newItem.id) {
+                items.splice(i, 1);
+            }
+        }
+
+        items.unshift(newItem);
+        return items;
     }
 }
 

@@ -13,7 +13,7 @@ class templateEdit {
 
     render() {
         let template = window.state.activeTemplate,
-            templateStatusText = !template || template.status === 1 ? 'Enabled' : 'Disabled',
+            templateStatusText = !template || template.status === 0 ? 'draft' : (template.status === 1 ? 'published' : 'edited'),
             templateDomain = !template || !template.networkPath ? false : template.networkPath,
             domainOptionsHTML = '';
 
@@ -49,8 +49,10 @@ class templateEdit {
                 <div class="post-meta">
                     <div class="post-meta-indicator">
                         <div class="indicator-bar-background"></div>
-                        <div class="indicator-bar ` + templateStatusText + `"></div>
-                        <div class="indicator-item ` + (template && template.status === 1 ? 'active' : '') + `">` + templateStatusText + `</div>
+                        <div class="indicator-bar ` + templateStatusText.toLocaleLowerCase() + `"></div>
+                        <div class="indicator-item active">Draft</div>
+                        <div class="indicator-item ` + (template && template.status > 0 ? 'active' : '') + `">Published</div>
+                        <div class="indicator-item ` + (template && template.status > 1 ? 'active' : '') + `">Edited</div>
                     </div>
                     <div class="post-controls">
                         <div class="button preview">Preview</div>
@@ -70,6 +72,8 @@ class templateEdit {
 
         window.jquery('.post-edit .post-controls .preview').on('click', function(){
             tempThis.saveDraftTemplate(template, true, function() {
+                window.controller.renderView('templateEdit');
+                window.state.activeTemplate = template;
                 window.controller.renderView('templatePreview');
             })
         });
@@ -86,7 +90,15 @@ class templateEdit {
 
                 window.safe.uploadFile(file.getPath('templates' + path.sep + template.id + '.js'), template.networkPath + 'template.js')
                     .then(result => {
-                        window.controller.renderView('templateEditUploadSuccess');
+                        template.status = 1;
+                        window.state.templates.replaceListItemById(window.state.templates.get('list'), template);
+
+                        window.state.templates.save(function() {
+                            window.jquery('.post-edit .post-edit-loading').remove();
+                            window.controller.renderView('templateEdit');
+                            window.state.activeTemplate = template;
+                            window.controller.renderView('templateEditUploadSuccess');
+                        });
                     });
             });
         });
@@ -122,6 +134,7 @@ class templateEdit {
             editorAfter = ace.edit('editor-after'),
             editorJs = ace.edit('editor-js');
 
+        template.status = template.status === 1 ? 2 : template.status;
         template.title = window.jquery('#post-title').val();
         template.css = editorCss.getValue();
         template.js = editorJs.getValue();
@@ -129,15 +142,7 @@ class templateEdit {
         template.templateAfter = editorAfter.getValue();
         template.networkPath = window.jquery('.post-edit select[name="post-domain"]').val();
 
-        let currentTemplates = window.state.templates.get('list');
-
-        for (let i = 0; i < currentTemplates.length; i++) {
-            if (currentTemplates[i].id === template.id) {
-                currentTemplates.splice(i, 1);
-            }
-        }
-
-        currentTemplates.unshift(template);
+        let currentTemplates = window.state.templates.replaceListItemById(window.state.templates.get('list'), template);
 
         window.state.templates.set('list', currentTemplates);
         window.state.activeTemplate = template;

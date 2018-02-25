@@ -8,7 +8,6 @@ class postEdit {
         this.render = this.render.bind(this);
         this.remove = this.remove.bind(this);
         this.safeDraftPost = this.safeDraftPost.bind(this);
-        this.replacePost = this.replacePost.bind(this);
     }
 
     render() {
@@ -80,6 +79,8 @@ class postEdit {
         let tempThis = this;
         window.jquery('.post-edit .post-controls .save-draft').on('click', function(){
             tempThis.safeDraftPost(post, function() {
+                window.controller.renderView('postEdit');
+                window.state.activePost = post;
                 window.controller.renderView('postEditSuccess');
             })
         });
@@ -102,9 +103,12 @@ class postEdit {
                 window.safe.uploadFile(file.getPath('posts' + path.sep + post.id + '.html'), post.networkPath + post.slug + '.html')
                     .then(result => {
                         post.status = 1;
-                        tempThis.replacePost(window.state.posts.get('list'), post);
+                        window.state.posts.replaceListItemById(window.state.posts.get('list'), post);
 
                         window.state.posts.save(function() {
+                            window.jquery('.post-edit .post-edit-loading').remove();
+                            window.controller.renderView('postEdit');
+                            window.state.activePost = post;
                             window.controller.renderView('postEditUploadSuccess');
                         });
                     });
@@ -140,7 +144,7 @@ class postEdit {
         let dateOptions = {weekday: "short", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"};
         post.lastModified = (new Date).toLocaleDateString('en-us', dateOptions);
 
-        let currentPosts = this.replacePost(window.state.posts.get('list'), post);
+        let currentPosts = window.state.posts.replaceListItemById(window.state.posts.get('list'), post);
 
         window.state.posts.set('list', currentPosts);
         window.state.activePost = post;
@@ -150,24 +154,6 @@ class postEdit {
             file.createFile('posts' + path.sep + post.id + '.html', '<div id="c">' + post.content + '</div><script type="text/javascript" src="/template.js"></script>', callback);
         });
     }
-
-    /**
-     * Replaces a given post by ID (if it is set) with a new post
-     *
-     * @param {Array} posts
-     * @param {{}} newPost
-     */
-    replacePost(posts, newPost) {
-        for (let i = 0; i < posts.length; i++) {
-            if (posts[i].id === newPost.id) {
-                posts.splice(i, 1);
-            }
-        }
-
-        posts.unshift(newPost);
-        return posts;
-    }
-
 }
 
 module.exports = new postEdit;
