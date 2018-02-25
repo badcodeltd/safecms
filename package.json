@@ -1,6 +1,6 @@
 {
   "name": "safe-cms",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "A simple to use content management system for the SAFE Network",
   "main": "main.js",
   "scripts": {
