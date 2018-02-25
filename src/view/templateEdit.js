@@ -88,18 +88,20 @@ class templateEdit {
                     </div>
                 `);
 
-                window.safe.uploadFile(file.getPath('templates' + path.sep + template.id + '.js'), template.networkPath + 'template.js')
-                    .then(result => {
-                        template.status = 1;
-                        window.state.templates.replaceListItemById(window.state.templates.get('list'), template);
+                file.createFile('templates' + path.sep + template.id + '.js', templateRenderer.compile(template, false), function(){
+                    window.safe.uploadFile(file.getPath('templates' + path.sep + template.id + '.js'), template.networkPath + 'template.js')
+                        .then(result => {
+                            template.status = 1;
+                            window.state.templates.replaceListItemById(window.state.templates.get('list'), template);
 
-                        window.state.templates.save(function() {
-                            window.jquery('.post-edit .post-edit-loading').remove();
-                            window.controller.renderView('templateEdit');
-                            window.state.activeTemplate = template;
-                            window.controller.renderView('templateEditUploadSuccess');
+                            window.state.templates.save(function() {
+                                window.jquery('.post-edit .post-edit-loading').remove();
+                                window.controller.renderView('templateEdit');
+                                window.state.activeTemplate = template;
+                                window.controller.renderView('templateEditUploadSuccess');
+                            });
                         });
-                    });
+                });
             });
         });
 
@@ -141,6 +143,7 @@ class templateEdit {
         template.templateBefore = editorBefore.getValue();
         template.templateAfter = editorAfter.getValue();
         template.networkPath = window.jquery('.post-edit select[name="post-domain"]').val();
+        template.networkPathCache = window.jquery('select[name="post-domain"] option[value="' + template.networkPath + '"]').text();
 
         let currentTemplates = window.state.templates.replaceListItemById(window.state.templates.get('list'), template);
 

@@ -15,12 +15,15 @@ class template {
      * @returns {string}
      */
     compile(templateObject, devOnly) {
+        let compiledHtmlA = devOnly ? this.replaceUrlsWithLocalPaths(templateObject.templateBefore, templateObject.networkPath) : templateObject.templateBefore,
+            compiledHtmlB = devOnly ? this.replaceUrlsWithLocalPaths(templateObject.templateBefore, templateObject.networkPath) : templateObject.templateAfter;
+
         return uglifyjs.minify(this.generate(JSON.stringify({
             css: btoa(this.sanitizeCss(csso.minify(templateObject.css).css)),
-            htmla: btoa(templateObject.templateBefore),
-            htmlb: btoa(templateObject.templateAfter),
+            htmla: btoa(compiledHtmlA),
+            htmlb: btoa(compiledHtmlB),
             js: btoa(uglifyjs.minify(templateObject.js).code)
-        }))).code;
+        }), devOnly)).code;
     }
 
     /**
@@ -56,6 +59,31 @@ class template {
                 _b.innerHTML = "Back to home";
                 _c[v](_b);
             } ` + (advertDisabled ? `document[n]('safe-advert')[0].setAttribute('style', 'display: none;')` : ``);
+    }
+
+    replaceUrlsWithLocalPaths(content, networkPath) {
+        let files = window.state.files.get('list'),
+            urlRegularExpression = /src="(?!safe:\/\/)(\/?[^"]*)"/g,
+            matches = content.match(urlRegularExpression);
+
+        if (!matches || matches === null) {
+            return content;
+        }
+
+        for (let i = 0; i < files.length; i++) {
+            let relativeUrlRegularExpression = new RegExp("/?" + files[i].slug, "g");
+
+            for (let n = 0; n < matches.length; n++) {
+                let temporaryMatch = matches[n],
+                    actualUri = temporaryMatch.replace(/"/, '').replace(/src=/, '');
+
+                if ((networkPath === files[i].networkPath) && relativeUrlRegularExpression.test(actualUri)) {
+                    content = content.replace(matches[n], 'src="' + files[i].path + '"');
+                }
+            }
+        }
+
+        return content;
     }
 
     sanitizeCss(css) {
