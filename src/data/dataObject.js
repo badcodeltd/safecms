@@ -34,18 +34,30 @@ class dataObject {
      * @param callback
      */
     load(callback) {
-        let thisProxy = this;
+        let thisProxy = this,
+            encodingOptions = ['latin1', 'ucs2', false];
 
-        file.getFile('data' + path.sep + this.identifier + '.json', function(content){
-            if (content === null) {
-                callback(thisProxy);
-                return;
+        for (let i = 0; i < encodingOptions.length; i++) {
+            let error = true;
+
+            if (error) {
+                error = false;
+                file.getFile('data' + path.sep + this.identifier + '.json', function (content) {
+                    if (content === null) {
+                        callback(thisProxy);
+                        return;
+                    }
+
+                    try {
+                        thisProxy.data = JSON.parse(content);
+                        thisProxy.isLoaded = true;
+                        callback(thisProxy);
+                    } catch(err) {
+                        error = true;
+                    }
+                }, encodingOptions[i]);
             }
-
-            thisProxy.data = JSON.parse(content);
-            thisProxy.isLoaded = true;
-            callback(thisProxy);
-        });
+        }
     }
 
     /**

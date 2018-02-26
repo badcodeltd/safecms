@@ -155,7 +155,19 @@ class postEdit {
 
         file.createDirectory('posts');
         window.state.posts.save(function(){
-            file.createFile('posts' + path.sep + post.id + '.html', '<div id="c">' + post.content + '</div><script type="text/javascript" src="/template.js"></script>', callback);
+            file.createFile(
+                'posts' + path.sep + post.id + '.html',
+`<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="c">` + post.content + `</div>
+        <script type="text/javascript" src="/template.js"></script>
+    </body>
+</html>`,
+                callback
+            );
         });
     }
 }

@@ -3,8 +3,18 @@
  */
 class encoding {
     constructor() {
+        this.getDefaultFileEncoding = this.getDefaultFileEncoding.bind(this);
         this.encodeUnicodeToBase64 = this.encodeUnicodeToBase64.bind(this);
         this.decodeUnicodeFromBase64 = this.decodeUnicodeFromBase64.bind(this);
+    }
+
+    /**
+     * Use utf8 instead of latin1 which seems to be the node default since 6.4
+     *
+     * @returns {string}
+     */
+    getDefaultFileEncoding() {
+        return 'utf8';
     }
 
     /**

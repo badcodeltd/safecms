@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const encoding = require('../util/encoding');
 
 /**
  * All paths accepted and returned by this class are relative to the App's safe-cms folder for normalisation
@@ -90,9 +91,12 @@ class file {
      *
      * @param relativePath
      * @param callback
+     * @param {string} encodingOverride optional
      */
-    getFile(relativePath, callback) {
-        fs.readFile(this.getPath(relativePath), function read(err, content) {
+    getFile(relativePath, callback, encodingOverride) {
+        let encodingValue = encodingOverride ? encodingOverride : encoding.getDefaultFileEncoding();
+
+        fs.readFile(this.getPath(relativePath), encodingValue, function read(err, content) {
             if (err) {
                 callback(null);
                 return;
@@ -112,7 +116,7 @@ class file {
      * @returns {boolean}       true on success
      */
     createFile(relativePath, content, callback) {
-        fs.writeFile(this.getPath(relativePath), content, function(err) {
+        fs.writeFile(this.getPath(relativePath), content, encoding.getDefaultFileEncoding(), function(err) {
             callback(!err);
         });
     }
