@@ -17,7 +17,7 @@ class templateEdit {
             templateDomain = !template || !template.networkPath ? false : template.networkPath,
             domainOptionsHTML = '';
 
-        window.state.activePost = false;
+        window.state.activeTemplate = false;
 
         for (let i = 0; i < window.state.cachedDomains.length; i++) {
             let d = window.state.cachedDomains[i];

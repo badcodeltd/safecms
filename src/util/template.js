@@ -16,7 +16,7 @@ class template {
      */
     compile(templateObject, devOnly) {
         let compiledHtmlA = devOnly ? this.replaceUrlsWithLocalPaths(templateObject.templateBefore, templateObject.networkPath) : templateObject.templateBefore,
-            compiledHtmlB = devOnly ? this.replaceUrlsWithLocalPaths(templateObject.templateBefore, templateObject.networkPath) : templateObject.templateAfter;
+            compiledHtmlB = devOnly ? this.replaceUrlsWithLocalPaths(templateObject.templateAfter, templateObject.networkPath) : templateObject.templateAfter;
 
         return uglifyjs.minify(this.generate(JSON.stringify({
             css: btoa(this.sanitizeCss(csso.minify(templateObject.css).css)),
