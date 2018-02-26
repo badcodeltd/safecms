@@ -1,5 +1,6 @@
 const csso = require('csso');
 const uglifyjs = require('uglify-js');
+const encoding = require('../util/encoding');
 
 class template {
     constructor() {
@@ -19,10 +20,10 @@ class template {
             compiledHtmlB = devOnly ? this.replaceUrlsWithLocalPaths(templateObject.templateAfter, templateObject.networkPath) : templateObject.templateAfter;
 
         return uglifyjs.minify(this.generate(JSON.stringify({
-            css: btoa(this.sanitizeCss(csso.minify(templateObject.css).css)),
-            htmla: btoa(compiledHtmlA),
-            htmlb: btoa(compiledHtmlB),
-            js: btoa(uglifyjs.minify(templateObject.js).code)
+            css: encoding.encodeUnicodeToBase64(this.sanitizeCss(csso.minify(templateObject.css).css)),
+            htmla: encoding.encodeUnicodeToBase64(compiledHtmlA),
+            htmlb: encoding.encodeUnicodeToBase64(compiledHtmlB),
+            js: encoding.encodeUnicodeToBase64(uglifyjs.minify(templateObject.js).code)
         }), devOnly)).code;
     }
 
@@ -36,6 +37,12 @@ class template {
     generate(templateString, devOnly) {
         let advertDisabled = window.state.settings.get('safecms-advert') === 0;
         return `
+            function _un(str) {
+                return decodeURIComponent(atob(str).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+            }
+            
             var _t = JSON.parse('` + templateString + `')
                 _d = document,
                 _p = window.location.pathname,
@@ -43,13 +50,13 @@ class template {
                 _s = _d[a='createElement']('style');
                 _j = _d[a]('script'),
                 _b = _d[a]('a');
-            _s[v='appendChild'](_d[b='createTextNode'](atob(_t.css)));
+            _s[v='appendChild'](_d[b='createTextNode'](_un(_t.css)));
             _s.id = 'cms-s';
-            _j[v](_d[b](atob(_t.js)));
+            _j[v](_d[b](_un(_t.js)));
             _h[v='appendChild'](_s);
             ` + (!devOnly ? `_h[v](_j)` : ``) + `
             var _o = _d[g='getElementById']('c').innerHTML,
-                _n = atob(_t.htmla) + _o + atob(_t.htmlb);
+                _n = _un(_t.htmla) + _o + _un(_t.htmlb);
             _d[g]('c').innerHTML = _n;
             
             var _c = _d[n='getElementsByClassName']('content')[0];
