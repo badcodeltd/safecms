@@ -1,3 +1,5 @@
+baseSuccess = require('./baseSuccess');
+
 class templateEditUploadSuccess {
     constructor() {
         this.dependencies = ['page', 'templateEdit'];
@@ -6,16 +8,11 @@ class templateEditUploadSuccess {
     }
 
     render() {
-        window.jquery('#container').append(`<div class="post-edit-success">Your template was published to the SAFE Network.</div>`);
-
-        window.state.postEditSuccessTimeout = setTimeout(function(){
-            window.jquery('#container').find('.post-edit-success').remove();
-        }, 3000);
+        baseSuccess.render('templateEditUploadSuccess', 'Your template was published to the SAFE Network.');
     }
 
     remove() {
-        clearTimeout(window.state.postEditSuccessTimeout);
-        window.jquery('#container').find('.post-edit-success').remove();
+        baseSuccess.remove('templateEditUploadSuccess');
     }
 }
 
