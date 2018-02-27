@@ -51,15 +51,17 @@ class controller {
      * Removes the currently rendered view and renders a new view
      *
      * @param {string} viewIdentifier
+     * @param {boolean} forceDependencyRender  Optional
      */
-    renderView(viewIdentifier) {
+    renderView(viewIdentifier, forceDependencyRender) {
         let currentView = this.views[this.activeView],
             newView = this.views[viewIdentifier],
             dependenciesMatch = this.isMatchingDependencies(currentView.dependencies, newView.dependencies);
+        forceDependencyRender = typeof forceDependencyRender !== "undefined";
 
         this.views[this.activeView].remove();
 
-        if (!dependenciesMatch) {
+        if (!dependenciesMatch || forceDependencyRender === true) {
             for (let i = 0; i < currentView.dependencies.length; i++) {
                 this.views[currentView.dependencies[i]].remove();
             }

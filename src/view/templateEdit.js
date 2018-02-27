@@ -67,15 +67,13 @@ class templateEdit {
         let tempThis = this;
         window.jquery('.post-edit .post-controls .save-draft').on('click', function(){
             tempThis.saveDraftTemplate(template, false, function() {
-                window.controller.renderView('templateEditSuccess');
+                window.controller.renderView('templateEditSuccess', true);
             })
         });
 
         window.jquery('.post-edit .post-controls .preview').on('click', function(){
             tempThis.saveDraftTemplate(template, true, function() {
-                window.controller.renderView('templateEdit');
-                window.state.activeTemplate = template;
-                window.controller.renderView('templatePreview');
+                window.controller.renderView('templatePreview', true);
             })
         });
 
@@ -97,9 +95,7 @@ class templateEdit {
 
                             window.state.templates.save(function() {
                                 window.jquery('.post-edit .post-edit-loading').remove();
-                                window.controller.renderView('templateEdit');
-                                window.state.activeTemplate = template;
-                                window.controller.renderView('templateEditUploadSuccess');
+                                window.controller.renderView('templateEditUploadSuccess', true);
                             });
                         });
                 });

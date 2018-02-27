@@ -83,9 +83,7 @@ class postEdit {
         let tempThis = this;
         window.jquery('.post-edit .post-controls .save-draft').on('click', function(){
             tempThis.safeDraftPost(post, function() {
-                window.controller.renderView('postEdit');
-                window.state.activePost = post;
-                window.controller.renderView('postEditSuccess');
+                window.controller.renderView('postEditSuccess', true);
             })
         });
 
@@ -111,9 +109,7 @@ class postEdit {
 
                         window.state.posts.save(function() {
                             window.jquery('.post-edit .post-edit-loading').remove();
-                            window.controller.renderView('postEdit');
-                            window.state.activePost = post;
-                            window.controller.renderView('postEditUploadSuccess');
+                            window.controller.renderView('postEditUploadSuccess', true);
                         });
                     });
             });
