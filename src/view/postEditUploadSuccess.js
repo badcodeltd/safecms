@@ -1,3 +1,5 @@
+baseSuccess = require('./baseSuccess');
+
 class postEditUploadSuccess {
     constructor() {
         this.dependencies = ['page', 'postEdit'];
@@ -6,16 +8,12 @@ class postEditUploadSuccess {
     }
 
     render() {
-        window.jquery('#container').append(`<div class="post-edit-success">Your post was published to the SAFE Network.</div>`);
+        baseSuccess.render('postEditUploadSuccessTimeout', 'Your post was published to the SAFE Network.');
 
-        window.state.postEditSuccessTimeout = setTimeout(function(){
-            window.jquery('#container').find('.post-edit-success').remove();
-        }, 3000);
     }
 
     remove() {
-        clearTimeout(window.state.postEditSuccessTimeout);
-        window.jquery('#container').find('.post-edit-success').remove();
+        baseSuccess.remove('postEditUploadSuccessTimeout');
     }
 }
 

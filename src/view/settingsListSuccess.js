@@ -1,3 +1,5 @@
+baseSuccess = require('./baseSuccess');
+
 class settingsListSuccess {
     constructor() {
         this.dependencies = ['page', 'settingsList'];
@@ -6,16 +8,11 @@ class settingsListSuccess {
     }
 
     render() {
-        window.jquery('#container').append(`<div class="post-edit-success">Your settings have been saved.</div>`);
-
-        window.state.postEditSuccessTimeout = setTimeout(function(){
-            window.jquery('#container').find('.post-edit-success').remove();
-        }, 3000);
+        baseSuccess.render('settingsListSuccessTimeout', 'Your settings have been saved.');
     }
 
     remove() {
-        clearTimeout(window.state.postEditSuccessTimeout);
-        window.jquery('#container').find('.post-edit-success').remove();
+        baseSuccess.remove('settingsListSuccessTimeout');
     }
 }
 

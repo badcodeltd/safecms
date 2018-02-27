@@ -1,3 +1,5 @@
+baseSuccess = require('./baseSuccess');
+
 class templateEditSuccess {
     constructor() {
         this.dependencies = ['page', 'templateEdit'];
@@ -6,16 +8,11 @@ class templateEditSuccess {
     }
 
     render() {
-        window.jquery('#container').append(`<div class="post-edit-success">Your draft post was saved locally.</div>`);
-
-        window.state.postEditSuccessTimeout = setTimeout(function(){
-            window.jquery('#container').find('.post-edit-success').remove();
-        }, 3000);
+        baseSuccess.render('templateEditSuccessTimeout', 'Your draft template was saved locally');
     }
 
     remove() {
-        clearTimeout(window.state.postEditSuccessTimeout);
-        window.jquery('#container').find('.post-edit-success').remove();
+        baseSuccess.remove('templateEditSuccessTimeout');
     }
 }
 

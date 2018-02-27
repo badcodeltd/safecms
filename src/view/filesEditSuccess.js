@@ -1,3 +1,5 @@
+baseSuccess = require('./baseSuccess');
+
 class filesEditSuccess {
     constructor() {
         this.dependencies = ['page', 'filesEdit'];
@@ -6,16 +8,11 @@ class filesEditSuccess {
     }
 
     render() {
-        window.jquery('#container').append(`<div class="post-edit-success">Your file was published to the SAFE network.</div>`);
-
-        window.state.filesEditSuccessTimeout = setTimeout(function(){
-            window.jquery('#container').find('.post-edit-success').remove();
-        }, 3000);
+        baseSuccess.render('filesEditSuccessTimeout', 'Your file was published to the SAFE network.');
     }
 
     remove() {
-        clearTimeout(window.state.filesEditSuccessTimeout);
-        window.jquery('#container').find('.post-edit-success').remove();
+        baseSuccess.remove('filesEditSuccessTimeout');
     }
 }
 
