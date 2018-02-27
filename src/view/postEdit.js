@@ -96,6 +96,11 @@ class postEdit {
                     return;
                 }
 
+                if (post.slug.match(/\.html/) !== null) {
+                    alert("Your post URL will automatically have '.html' added to the end, please remove '.html' from the post URL");
+                    return;
+                }
+
                 window.jquery('#container .post-edit').append(`
                     <div class="post-edit-loading">
                         <div class="post-edit-loading-inner">Uploading post to SAFE Network</div>
