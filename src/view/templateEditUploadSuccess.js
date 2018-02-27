@@ -8,11 +8,11 @@ class templateEditUploadSuccess {
     }
 
     render() {
-        baseSuccess.render('templateEditUploadSuccess', 'Your template was published to the SAFE Network.');
+        baseSuccess.render('templateEditUploadSuccessTimeout', 'Your template was published to the SAFE Network.');
     }
 
     remove() {
-        baseSuccess.remove('templateEditUploadSuccess');
+        baseSuccess.remove('templateEditUploadSuccessTimeout');
     }
 }
 

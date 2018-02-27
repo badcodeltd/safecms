@@ -8,12 +8,12 @@ class postEditUploadSuccess {
     }
 
     render() {
-        baseSuccess.render('postEditUploadSuccess', 'Your post was published to the SAFE Network.');
+        baseSuccess.render('postEditUploadSuccessTimeout', 'Your post was published to the SAFE Network.');
 
     }
 
     remove() {
-        baseSuccess.remove('postEditUploadSuccess');
+        baseSuccess.remove('postEditUploadSuccessTimeout');
     }
 }
 
