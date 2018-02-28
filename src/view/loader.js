@@ -18,9 +18,11 @@ class loader {
             </div>`
         );
 
-        window.safe.initialize(function(safeApp){
-            window.controller.renderView(safeApp.app.isNetStateConnected() ? 'domainList' : 'loaderError');
-        });
+        window.setTimeout(function() {
+            window.safe.initialize(function(safeApp){
+                window.controller.renderView(safeApp.app.isNetStateConnected() ? 'domainList' : 'loaderError');
+            });
+        }, 1000);
     }
 
     remove() {
