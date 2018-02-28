@@ -13,7 +13,9 @@ class filesEdit {
     render() {
         let files = window.state.activeFile,
             filesDomain = !files || !files.networkPath ? false : files.networkPath,
-            domainOptionsHTML = '';
+            domainOptionsHTML = '',
+            editable = !files || !files.path || !files.path.length,
+            absoluteFileUrl = '';
 
         window.state.activeFile = false;
 
@@ -22,6 +24,11 @@ class filesEdit {
 
             for (let s = 0; s < d.services.length; s++) {
                 let networkPath = `_public/` + d.name + `/root-` + d.services[s].name + `/`;
+
+                if (files && files.slug && files.networkPath === networkPath) {
+                    absoluteFileUrl = `safe://` + d.services[s].name + `.` + d.name + `/` + files.slug;
+                }
+
                 domainOptionsHTML += `<option value="` + networkPath + `" ` + (networkPath === filesDomain ? "selected" : '') + `>safe://` + d.services[s].name + `.` + d.name + `</option>`;
             }
         }
@@ -31,13 +38,18 @@ class filesEdit {
                 <div class="post-content">
                     <form action="" method="POST">
                         <div><label>File Title</label></div>
-                        <input type="text" id="file-title" name="title" placeholder="File title" value="` + (files ? files.title : '') + `" />
+                        ` + (!editable ? `<div class="form-value">` + files.title + `</div><div class="hidden-form-element">` : '') + `
+                            <input type="text" id="file-title" name="title" placeholder="File title" value="` + (files ? files.title : '') + `" />
+                        ` + (!editable ? `</div><div class="hidden-form-element">` : '') + `
                         <div><label>File Domain</label></div>
-                        <select name="file-domain">` + (domainOptionsHTML.length ? domainOptionsHTML : '<option disabled>Please create a domain and service on the Domains page</option>') + `</select>
+                        <select name="file-domain">` + (domainOptionsHTML.length ? domainOptionsHTML : `<option disabled>Please create a domain and service on the Domains page</option>`) + `</select>
+                        ` + (!editable ? `</div>` : '') + `
                         <div><label>File URL</label></div>
+                        ` + (!editable ? `<div class="form-value">` + absoluteFileUrl + `</div><div class="hidden-form-element">` : '') + `
                         <input class="slug active" type="text" id="file-slug" name="slug" placeholder="File URL" value="` + (files ? files.slug : '') + `" />
+                        ` + (!editable ? `</div>` : ``) + `
                         <div><label>File</label></div>
-                        ` + (files.path && files.path.length ? `<div class="file-upload-path">` + files.path + `</div>` : `<input type="file" name="file-path" />`) + `
+                        ` + (!editable ? `<div class="file-upload-path">` + files.path + `</div>` : `<input type="file" name="file-path" />`) + `
                     </form>
                 </div>
                 <div class="post-meta">

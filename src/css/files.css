@@ -5,3 +5,13 @@
 .file-edit .post-controls {
     margin-top: 0;
 }
+
+.file-edit .hidden-form-element {
+    display: none;
+}
+
+.file-edit .form-value {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
