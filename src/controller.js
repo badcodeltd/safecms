@@ -4,18 +4,13 @@ const page = require('./view/page');
 const domainList = require('./view/domainList');
 const postList = require('./view/postList');
 const postEdit = require('./view/postEdit');
-const postEditSuccess = require('./view/postEditSuccess');
-const postEditUploadSuccess = require('./view/postEditUploadSuccess');
 const templateList = require('./view/templateList');
 const templateEdit = require('./view/templateEdit');
-const templateEditSuccess = require('./view/templateEditSuccess');
 const templatePreview = require('./view/templatePreview');
-const templateEditUploadSuccess = require('./view/templateEditUploadSuccess');
 const filesList = require('./view/filesList');
 const filesEdit = require('./view/filesEdit');
-const filesEditSuccess = require('./view/filesEditSuccess');
 const settingsList = require('./view/settingsList');
-const settingsListSuccess = require('./view/settingsListSuccess');
+const genericResponse = require('./view/genericResponse');
 
 class controller {
     constructor() {
@@ -29,18 +24,18 @@ class controller {
             domainList: domainList,
             postList: postList,
             postEdit: postEdit,
-            postEditSuccess: postEditSuccess,
-            postEditUploadSuccess: postEditUploadSuccess,
+            postEditSuccess: new genericResponse('postEditSuccess', ['page', 'postEdit'], 'Your draft post was saved locally.'),
+            postEditUploadSuccess: new genericResponse('postEditUploadSuccess', ['page', 'postEdit'], 'Your post was published to the SAFE Network.'),
             templateList: templateList,
             templateEdit: templateEdit,
-            templateEditSuccess: templateEditSuccess,
-            templateEditUploadSuccess: templateEditUploadSuccess,
+            templateEditSuccess: new genericResponse('templateEditSuccess', ['page', 'templateEdit'], 'Your draft template was saved locally'),
+            templateEditUploadSuccess: new genericResponse('templateEditUploadSuccess', ['page', 'templateEdit'], 'Your template was published to the SAFE Network.'),
             templatePreview: templatePreview,
             filesList: filesList,
             filesEdit: filesEdit,
-            filesEditSuccess: filesEditSuccess,
+            filesEditSuccess: new genericResponse('filesEditSuccess', ['page', 'filesEdit'], 'Your file was published to the SAFE network.'),
             settingsList: settingsList,
-            settingsListSuccess: settingsListSuccess
+            settingsListSuccess: new genericResponse('settingsListSuccess', ['page', 'settingsList'], 'Your settings have been saved.')
         };
 
         this.activeView = 'mock';
